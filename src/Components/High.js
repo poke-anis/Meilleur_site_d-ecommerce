@@ -13,7 +13,7 @@ grid-row-start:1;
 grid-row-end:2;
 background-color:#ffb344;
 display:flex;
-justify-content:space-around;
+justify-content:space-between;
 align-items:center;
 
 
@@ -37,11 +37,11 @@ const High = () =>{
 
     return(
         <Highdiv>
-            <img src={Logo}/>
-            <div style={{width: 800}}>
+            <img src={Logo} style={{marginLeft:'10vw'}}/>
+            <div >
             <ResearchBar /> 
             </div> 
-            <Profilestatus>
+            <Profilestatus style={{marginRight:'10vw'}}>
                 <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
                 <P>Nom d'utilisateur</P>
             </Profilestatus>
