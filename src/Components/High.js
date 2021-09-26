@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import {Avatar} from '@mui/material';
 import { deepOrange, deepPurple } from '@mui/material/colors';
 import ResearchBar from './ResearchBar';
+import Logo from '../Assets/Images/Logo.png'
+
 
 const Highdiv = styled.header`
 grid-column-start:1;
@@ -13,6 +15,7 @@ background-color:#ffb344;
 display:flex;
 justify-content:space-around;
 align-items:center;
+
 
 `
 const P = styled.p`
@@ -34,8 +37,10 @@ const High = () =>{
 
     return(
         <Highdiv>
-            <img src='{}'/>
-            <ResearchBar/>
+            <img src={Logo}/>
+            <div style={{width: 800}}>
+            <ResearchBar /> 
+            </div> 
             <Profilestatus>
                 <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
                 <P>Nom d'utilisateur</P>
