@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Navbar from './Navbar'
 import High from './High';
+
 const Section = styled.section`
 display:grid;
 grid-template-columns: 25% auto 20%;
-grid-template-rows: 10% 5% auto 10%;
+grid-template-rows: 5% 5% auto 10%;
 background-color: #FFF8E5;
 width: 100vw;
 height: 100vh;
