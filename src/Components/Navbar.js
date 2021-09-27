@@ -8,16 +8,25 @@ grid-column-start:1;
 grid-column-end:4;
 grid-row-start:2;
 grid-row-end:3;
-background-color:#00a19d;
-display:flex;
-justify-content: flex-start;
-align-items:center;
+background-color:#051c48;
+color: white;
 `
-const Categories = styled.button`
-height:100%;
+const Categories = styled.div`
 
+width:250px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding-left: 20px;
+padding-right: 20px;
+height:100%;
 `
-const Cart = styled.div`
+const Centerdiv = styled.div`
+display:flex;
+
+height:100%;
+margin-right:auto;
+margin-left:10%;
 `
 const DivBar = styled.div`
 display:flex;
@@ -33,20 +42,23 @@ const Navbar = () =>{
 
     return(
         <Navbardiv>
-            <DivBar style={{backgroundColor:'#e05d5d'}}>
-                <ReorderIcon/>
+            <Centerdiv >
+            <Categories style={{backgroundColor:'#e05d5d'}}>
+                
                 Categories
-            </DivBar>
+                <ReorderIcon/>
+            </Categories>
             <DivBar>
                 <SvgIcon >
                     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
                 </SvgIcon>
                 Accueil
             </DivBar>
-            <DivBar>
+            <DivBar >
                 <InfoIcon/>
                 À propos
             </DivBar>
+            </Centerdiv>
         </Navbardiv>
     );
     

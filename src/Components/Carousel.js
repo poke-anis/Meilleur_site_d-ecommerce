@@ -5,42 +5,46 @@ import lavelinge from '../Assets/Images/lave-linge.jpg'
 import Refrigerateur from '../Assets/Images/refrigerateur.webp'
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+
 const slides = [
   {
-    image:
-      Televiseur
+    image:Televiseur,
+    Produits:'Televiseur'
   },
   {
     image:
-      lavelinge
+      lavelinge,
+      Produits:'lavelinge'
   },
   {
     image:
-      Refrigerateur
+      Refrigerateur,
+      Produits:'Refrigerateur'
   }
 
 ];
 const Contenant = styled.div`
-
-
+display:flex;
+justify-content:space-around;
+background-color : white;
+width:100%;
+height:100%;
+align-items:center;
 `
 
 const Carouseldiv = () => {
-  console.log(slides)
-
     return(
-        <Carousel  infiniteLoop autoPlay showThumbs={false} width='auto'>
-      
-              {slides.map((slide)=>{return(
+        <Carousel  showStatus={false} infiniteLoop autoPlay showThumbs={false} width={'100%'}>
+              {slides.map((slide,index)=>{
+                return(
                 <Contenant >
-                <img style={{width:500}} src={slide.image}/>)
-                </Contenant>)
+                  <h1>{slide.Produits}</h1>
+                <img style={{display:'block',width:'20%',objectFit: 'contain'}} src={slide.image}/>
+                </Contenant> )
               })}          
         </Carousel>
 
-
-  
-    )
+    );
 }
 
 export default Carouseldiv;

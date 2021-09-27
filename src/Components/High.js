@@ -11,7 +11,7 @@ grid-column-start:1;
 grid-column-end:4;
 grid-row-start:1;
 grid-row-end:2;
-background-color:#ffb344;
+background-color:#FFF8E5;
 display:flex;
 justify-content:space-between;
 align-items:center;
