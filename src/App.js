@@ -1,12 +1,11 @@
 import './App.css';
-import Test from './Components/Test.js'
+import Main from './Components/Main.js'
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
   return (
-    <Test/>
+    <Main/>
   )
 }
 

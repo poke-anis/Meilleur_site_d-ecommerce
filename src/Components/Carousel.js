@@ -30,16 +30,20 @@ background-color : white;
 width:100%;
 height:100%;
 align-items:center;
-`
 
+`
+const ImginCont = styled.img`
+width:30%;
+
+`
 const Carouseldiv = () => {
     return(
-        <Carousel  showStatus={false} infiniteLoop autoPlay showThumbs={false} width={'100%'}>
+        <Carousel  showStatus={false} infiniteLoop autoPlay showThumbs={false} >
               {slides.map((slide,index)=>{
-                return(
+              return(
                 <Contenant >
                   <h1>{slide.Produits}</h1>
-                <img style={{display:'block',width:'20%',objectFit: 'contain'}} src={slide.image}/>
+                  <ImginCont src={slide.image}/>
                 </Contenant> )
               })}          
         </Carousel>

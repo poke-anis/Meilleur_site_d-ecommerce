@@ -1,11 +1,14 @@
 import styled from 'styled-components';
-import * as React from 'react';
-import Card from 'react-bootstrap/Card'
+
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+
 import Lavevaisselle from '../Assets/Images/Lavevaisselle.png'
 import cuisinière from '../Assets/Images/cuisinière.jpg'
 import Televiseur from '../Assets/Images/Television.jpg'
 import lavelinge from '../Assets/Images/lave-linge.jpg'
 import Refrigerateur from '../Assets/Images/refrigerateur.webp'
+import { Row, Col } from 'antd';
 
 const Categdata=[
     {
@@ -36,13 +39,8 @@ const Categdata=[
 ]
 
 
-
-
 const Categ = styled.div`
-flex-wrap: wrap;
-width:100%;
-display:flex;
-justify-content: space-around;
+
 `
 const CategTitle= styled.div`
 margin-top: -1.5em ;
@@ -60,49 +58,49 @@ flex-basis: auto;
 const BorderedCateg= styled.div`
 border: #0A1129 solid 1px;
 width:220px;
+height:300px;
 position: relative;
 `
 const ImageCateg = styled.img`
 width:100%;
+padding:10px;
 `
-const Categories = ()=>{
-return(
-    <Categ>
-        <BorderedTop>
-        <CategTitle> <h1 style={{display: 'inline-block',backgroundColor: '#FFF8E5', paddingLeft: '20px', paddingRight: '20px'}}> Categories d'equipements </h1> </CategTitle>
-        </BorderedTop>
-        {Categdata.map((categorie,index)=>(
-        <BorderedCateg>
-        <CategTitle> 
-        <h1 style={{display: 'inline-block',backgroundColor: '#FFF8E5', paddingLeft: '20px', paddingRight: '20px',fontSize:'1.8em'}}> {categorie.Produits}</h1>
-        </CategTitle>
-            <ImageCateg src={categorie.image} ></ImageCateg>
-        </BorderedCateg>
 
+const Categories = ()=>{
+
+  const [appState, setAppState] = useState({
+    loading: false,
+    repos: null,
+  });
+  useEffect(() => {
+    setAppState({ loading: true });
+    const apiUrl = 'http://localhost:1337/categories';
+    axios.get(apiUrl).then((repos) => {
+      const allRepos = repos.data;
+      setAppState({ loading: false, repos: allRepos });
+    });
+  }, [setAppState]);
+
+return(
+<Row >
+  {!appState.repos || appState.repos.length === 0? <p>No repos, sorry</p>:
+  appState.loading?      
+      <p style={{ textAlign: 'center', fontSize: '30px' }}>
+        Hold on, fetching data may take some time :)
+      </p>:
+      appState.repos.map((categorie,index)=>(
+  <Col span={4}>
+    <BorderedCateg>
+      <CategTitle> 
+        <h1 style={{display: 'inline-block', paddingLeft: '20px', paddingRight: '20px',fontSize:'1.8em',backgroundColor:'#f0f2f5'}}> {categorie.Name}</h1>
+      </CategTitle>
+      <ImageCateg src={'http://localhost:1337'+categorie.Picture.url} ></ImageCateg>
+    </BorderedCateg>
+  </Col>
 ))}
 
 
-
-
-
-
-        {/* {Categdata.map((categorie,index)=>(
-            <BorderedCateg>
-            <CategTitle> <h1 style={{display: 'inline-block',backgroundColor: '#FFF8E5', paddingLeft: '20px', paddingRight: '20px'}}> {categorie.Produits} </h1> </CategTitle>
-        <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea>
-            <CardMedia
-            component="img"
-            height="140"
-            image={categorie.image}
-            />
-        </CardActionArea>
-</Card>
-</BorderedCateg>
-        ))} */}
-
-    </Categ>
-
+</Row>
 )
 
 };

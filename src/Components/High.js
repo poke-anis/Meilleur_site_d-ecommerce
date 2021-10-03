@@ -30,14 +30,17 @@ justify-content:space-around;
 width:15%;
 
 `
-
+const LogoImage = styled.img`
+margin-left:10vw;
+width : 5%;
+`
 
 
 const High = () =>{
 
     return(
         <Highdiv>
-            <img src={Logo} style={{marginLeft:'10vw'}}/>
+            <LogoImage src={Logo} />
             <div >
             <ResearchBar /> 
             </div> 
